@@ -11,7 +11,7 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 
 
 #scraperwiki.sqlite.execute("delete from swdata where Code>0") 
-count = 3659
+count = 4256
 while True:
     bcount = 0
     url = "https://www.hm.com/gb/login"
@@ -48,6 +48,7 @@ while True:
         temp = response.read()
         root = lxml.html.fromstring(temp)
         el = root.cssselect("tfoot td span")[0].text.strip()
+        print(repr(el[2:]))
         price = float(el[2:])
         print temp2,price
         if price < 37:
